@@ -43,15 +43,13 @@ class Student1{
     }
 }
 
-
-
 const Sreeja= new Student1("sreeja", 21, "sreejaamuda@gmail.com", ["typescript", "Blockchain"], {city: "Jagtial", state: "Telangana", pincode: 505327});
 
 Sreeja.getDetails();
 
 //TASK- 2
 
-console.log(getValue("\nsreeja"));
+console.log(getValue("sreeja"));
 
 //TASK- 3
 interface Student{

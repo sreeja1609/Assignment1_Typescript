@@ -1,3 +1,3 @@
-export function getValue<Type>(value: Type): Type {
-    return value;
+export function getValue<Type>(element: Type) {
+    return {value: element};
 }

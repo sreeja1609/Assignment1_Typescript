@@ -37,7 +37,7 @@ var Student1 = /** @class */ (function () {
 var Sreeja = new Student1("sreeja", 21, "sreejaamuda@gmail.com", ["typescript", "Blockchain"], { city: "Jagtial", state: "Telangana", pincode: 505327 });
 Sreeja.getDetails();
 //TASK- 2
-console.log((0, utils_1.getValue)("\nsreeja"));
+console.log((0, utils_1.getValue)("sreeja"));
 var SreejaReadonly = {
     name: "Sreeja",
     age: 21,

@@ -1,5 +1,5 @@
 //TASK- 1
-type address = {
+type Address = {
     city: string;
     state: string;
     pincode: number;
@@ -9,7 +9,7 @@ interface Student {
     age: number;
     email: string;
     course_list: string[];
-    your_address: address;
+    your_address: Address;
 }
 const Sreeja: Student = {
     name: "Sreeja",
@@ -33,59 +33,52 @@ const updates: Update<'name' | 'email' > = {
     name: "sree",
     email: "sreeja@gmail.com",
 };
-  
 const updatedStudent = updateStudent(Sreeja, updates);
   
 console.log(updatedStudent, "\n");
 
 //TASK- 2
 
-type isString<T> = T extends string ? "Yes" : "No";
-function isStringOrNot<T>(value :T): void{
-    type check = isString<typeof value>
-    const result : check = (typeof value === 'string' ? 'Yes' : 'No') as check;
-    console.log(result)
-}
+type IsString<T> = T extends string ? "Yes" : "No"; 
 
-//Example:
-const name1 = "Sreeja";
-const element: isString<typeof name1>="Yes"; 
-
-isStringOrNot("Sreeja");
+type A = IsString<string>;
+const abc: A = "Yes"
+console.log(abc);
 
 //TASK- 3 and 4
 type Employee = {
     name: string;
-    isLead: boolean;
     team?: Employee[];
 };
 
 //this employee type contains name of that employee, whether he is lead or not?, and his team members details if he is a lead. 
 
 const employees: Employee[] = [
-    { name: "Sreeja", isLead: true, team: [
-      { name: "rekha", isLead: false },
-      { name: "anju", isLead: false }
+    { name: "Sreeja", team: [
+      { name: "rekha"},
+      { name: "anju"}
     ]},
-    { name: "anusha", isLead: false },
-    { name: "nikitha", isLead: true, team: [
-      { name: "mamatha", isLead: false },
-      { name: "keerthana", isLead: false }
+    { name: "anusha"},
+    { name: "nikitha", team: [
+      { name: "mamatha"},
+      { name: "keerthana"}
     ]},
-    { name: "rekha", isLead: false }
+    { name: "rekha"}
 ];
 
 function printLeadStatus(employee: Employee): void {
-    if (employee.isLead) {
+  if (typeof employee.team != "undefined" && employee.team != null) {
       console.log(`\n ${employee.name} is Lead`);
-    } else {
+  } else {
       console.log(`${employee.name} is not Lead`);
-    }
-  
-    if (employee.team) {
-      employee.team.forEach(member => printLeadStatus(member));
-    }
+  }
+  leadStatus(employee.team);
 }
 
-employees.forEach(employee => printLeadStatus(employee));
-  
+function leadStatus(employees?: Employee[]): void {
+  if (employees) {
+      employees.forEach(employee => printLeadStatus(employee));
+  }
+}
+
+leadStatus(employees);

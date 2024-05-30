@@ -30,36 +30,33 @@ var updates = {
 };
 var updatedStudent = updateStudent(Sreeja, updates);
 console.log(updatedStudent, "\n");
-function isStringOrNot(value) {
-    var result = (typeof value === 'string' ? 'Yes' : 'No');
-    console.log(result);
-}
-//Example:
-var name1 = "Sreeja";
-var element = "Yes";
-isStringOrNot("Sreeja");
+var abc = "Yes";
+console.log(abc);
 //this employee type contains name of that employee, whether he is lead or not?, and his team members details if he is a lead. 
 var employees = [
-    { name: "Sreeja", isLead: true, team: [
-            { name: "rekha", isLead: false },
-            { name: "anju", isLead: false }
+    { name: "Sreeja", team: [
+            { name: "rekha" },
+            { name: "anju" }
         ] },
-    { name: "anusha", isLead: false },
-    { name: "nikitha", isLead: true, team: [
-            { name: "mamatha", isLead: false },
-            { name: "keerthana", isLead: false }
+    { name: "anusha" },
+    { name: "nikitha", team: [
+            { name: "mamatha" },
+            { name: "keerthana" }
         ] },
-    { name: "rekha", isLead: false }
+    { name: "rekha" }
 ];
 function printLeadStatus(employee) {
-    if (employee.isLead) {
+    if (typeof employee.team != "undefined" && employee.team != null) {
         console.log("\n ".concat(employee.name, " is Lead"));
     }
     else {
         console.log("".concat(employee.name, " is not Lead"));
     }
-    if (employee.team) {
-        employee.team.forEach(function (member) { return printLeadStatus(member); });
+    leadStatus(employee.team);
+}
+function leadStatus(employees) {
+    if (employees) {
+        employees.forEach(function (employee) { return printLeadStatus(employee); });
     }
 }
-employees.forEach(function (employee) { return printLeadStatus(employee); });
+leadStatus(employees);

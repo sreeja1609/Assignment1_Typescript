@@ -1,7 +1,7 @@
 import {getValue} from "./utils"
 
 //TASK- 1
-type address = {
+type Address = {
     city: string;
     state: string;
     pincode: number;
@@ -11,13 +11,13 @@ class Student1{
     age: number;
     email: string;
     courses: string[];
-    your_address: address;
-    constructor(name: string, age: number, email: string, courses: string[], your_address: address){
+    yourAddress: Address;
+    constructor(name: string, age: number, email: string, courses: string[], yourAddress: Address){
         this.name = name;
         this.age = age;
         this.email = email;
         this.courses = courses;
-        this.your_address = your_address;
+        this.yourAddress = yourAddress;
     }
     protected getName = (): string =>{
         return this.name;
@@ -31,8 +31,8 @@ class Student1{
     protected getCourses = (): string[] =>{
         return this.courses;
     }
-    protected getAddress = (): address =>{
-        return this.your_address;
+    protected getAddress = (): Address =>{
+        return this.yourAddress;
     }
     getDetails = (): void => {
         console.log("\nname is: ", this.getName());
@@ -43,9 +43,9 @@ class Student1{
     }
 }
 
-const Sreeja= new Student1("sreeja", 21, "sreejaamuda@gmail.com", ["typescript", "Blockchain"], {city: "Jagtial", state: "Telangana", pincode: 505327});
+const sreeja= new Student1("sreeja", 21, "sreejaamuda@gmail.com", ["typescript", "Blockchain"], {city: "Jagtial", state: "Telangana", pincode: 505327});
 
-Sreeja.getDetails();
+sreeja.getDetails();
 
 //TASK- 2
 
@@ -57,7 +57,7 @@ interface Student{
     age: number;
     email: string;
     courses: string[];
-    your_address: address;
+    your_address: Address;
 }
 
 type CreateReadonly<Type> = {
@@ -65,7 +65,7 @@ type CreateReadonly<Type> = {
 }
 type ReadonlyStudent = CreateReadonly<Student>
 
-const SreejaReadonly: ReadonlyStudent = {
+const sreejaReadonly: ReadonlyStudent = {
     name: "Sreeja",
     age: 21,
     email: "sreejaamuda@gmail.com",
@@ -77,5 +77,5 @@ const SreejaReadonly: ReadonlyStudent = {
     }
 }
 
-// SreejaReadonly.age=22; //gives error since properties changed to Read only. 
+// sreejaReadonly.age=22; //gives error since properties changed to Read only. 
 

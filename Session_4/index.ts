@@ -38,15 +38,16 @@ let Sreeja: PersonRequired = {
         pincode: 505327
     }
 }
+
 let arr: string[] = [];
 namespace util{
-    export function concatAndReturn(PersonRequired: object): string[]{
-        for(let key in PersonRequired){
-            if((typeof PersonRequired[key]) === "object"){
-                concatAndReturn(PersonRequired[key]);
+    export function concatAndReturn<T>(T): string[]{
+        for(let key in T){
+            if((typeof T[key]) === "object"){
+                concatAndReturn(T[key]);
             }
             else{
-            arr.push(`${key} : ${PersonRequired[key]}`);
+            arr.push(`${key} : ${T[key]}`);
             }
         }
         return arr;
